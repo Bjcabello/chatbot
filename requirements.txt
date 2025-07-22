@@ -3,3 +3,6 @@ uvicorn
 requests
 chromadb
 pdfplumber
+
+#src dentro de backend/src
+#requirements.txt dentro del backend
