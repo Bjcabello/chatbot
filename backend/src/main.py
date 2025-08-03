@@ -7,8 +7,12 @@ load_dotenv()
 
 app = FastAPI(title="Chatbot Viamatica")
 
-app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
 
+
+
+# Incluir rutas
+app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
+app.include_router(index.router, prefix="/api/index", tags=["Index"])
 
 @app.get("/")
 def root():
