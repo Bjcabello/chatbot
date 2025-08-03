@@ -1,11 +1,15 @@
 from fastapi import FastAPI
+from src.routes import chat, index
+import os
 from dotenv import load_dotenv
 
-load_dotenv()  
+load_dotenv()
 
-app = FastAPI()
-app.title = "ChatBot IA"
+app = FastAPI(title="Chatbot Viamatica")
+
+app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
+
 
 @app.get("/")
-def read_root():
-    return {"message": "ChatBot Viamatica API funcionando"}
+def root():
+    return {"message": "Chatbot Viamatica backend activo"}
