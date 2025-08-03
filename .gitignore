@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+.Python
+env
+venv
+.venv
+
+# Editor
+.vscode/
+
+# Database
+chroma_db/
+.chroma_db/
+
+# Environment
+.env

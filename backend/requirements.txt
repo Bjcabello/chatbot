@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+langchain
+langchain-community
+chromadb
+pydantic
+python-dotenv
+pypdf
+markdown
+pymongo
+ollama
