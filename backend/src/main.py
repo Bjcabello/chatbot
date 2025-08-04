@@ -5,12 +5,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = FastAPI(title="Chatbot Viamatica")
+app = FastAPI(
+    title="ChatBot Viamatica",
+    description="Asistente empresarial basado en contexto",
+    version="1.0.0"
+)
 
 
 
 
-# Incluir rutas
 app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
 app.include_router(index.router, prefix="/api/index", tags=["Index"])
 

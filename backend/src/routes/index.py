@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.post("/index")
 def index_docs():
-    folder_path = "backend/src/context"  # Ajusta si tu ruta base es diferente
+    folder_path = "backend/src/context"  
     persist_directory = os.getenv("CHROMA_PATH", "chroma_db")
 
     # Cargar documentos .md y .pdf (sin guardarlos, solo para indexar)
