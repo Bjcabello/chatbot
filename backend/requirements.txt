@@ -9,3 +9,5 @@ pypdf
 markdown
 pymongo
 ollama
+pdfminer.six
+python-multipart

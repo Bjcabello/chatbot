@@ -1,22 +1,21 @@
 from fastapi import FastAPI
-from src.routes import chat, index
-import os
-from dotenv import load_dotenv
+from contextlib import asynccontextmanager
+from src.routes.chat import router as chat_router
+from src.routes.upload import router as upload_router
+from src.routes.index import router as index_router
 
-load_dotenv()
+from src.services.indexing_service import index_documents
 
-app = FastAPI(
-    title="ChatBot Viamatica",
-    description="Asistente empresarial basado en contexto",
-    version="1.0.0"
-)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Código al iniciar la app
+    index_documents()
+    yield
+    # Código al cerrar la app (opcional)
 
+app = FastAPI(lifespan=lifespan)
 
-
-
-app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
-app.include_router(index.router, prefix="/api/index", tags=["Index"])
-
-@app.get("/")
-def root():
-    return {"message": "Chatbot Viamatica backend activo"}
+# Rutas
+app.include_router(chat_router, prefix="/chat", tags=["Chat"])
+app.include_router(upload_router, prefix="/upload", tags=["Cargar PDF"])
+app.include_router(index_router, prefix="/docs", tags=["Indexación manual"])
